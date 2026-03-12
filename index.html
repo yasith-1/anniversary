@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Happy Anniversary Babyyyyyy! ❤️</title>
+</head>
+
+<body>
+    <div class="bg-hearts" id="hearts-container"></div>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="glass-card fade-in" style="animation-delay: 0.2s;">
+            <h1>Happy Anniversary!</h1>
+            <h2>Mine ❤️ Suduu Manikaaaaaa (Tanya)</h2>
+            <p>From March 13, 2019, to forever.</p>
+        </section>
+
+        <!-- Time Together Section -->
+        <section class="glass-card fade-in" style="animation-delay: 0.4s;">
+            <h3>Days Since We Started</h3>
+            <div class="counter-grid" id="anniversary-counter">
+                <div class="counter-item">
+                    <span class="counter-value" id="years">0</span>
+                    <span class="counter-label">Years</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-value" id="months">0</span>
+                    <span class="counter-label">Months</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-value" id="days">0</span>
+                    <span class="counter-label">Days</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-value" id="hours">0</span>
+                    <span class="counter-label">Hours</span>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-style: italic;">"The best thing in our lives."</p>
+        </section>
+
+        <!-- Match Game -->
+        <section class="glass-card fade-in" style="animation-delay: 0.5s;">
+            <div class="badge">Funny</div>
+            <h3>Are We a Match?</h3>
+            <div class="match-container">
+                <div class="match-names">
+                    <input type="text" id="name1" value="Tanya" readonly>
+                    <span class="heart-icon">❤️</span>
+                    <input type="text" id="name2" value="Yasith" readonly>
+                </div>
+                <div id="match-result" class="match-score">???</div>
+                <button class="btn" onclick="calculateMatch()">Check Now</button>
+            </div>
+        </section>
+
+        <!-- Reasons I Love You (Improved) -->
+        <section class="glass-card fade-in" style="animation-delay: 0.6s;">
+            <h3>Why I Love You</h3>
+            <div class="reason-box" id="reason-text">
+                Being with you is the best gift...
+            </div>
+            <button class="btn btn-secondary" onclick="generateReason()">Show Another Reason</button>
+        </section>
+
+        <!-- Who's More Likely To Game -->
+        <section class="glass-card fade-in" style="animation-delay: 0.7s;">
+            <h3>Who Is More Likely To...</h3>
+            <div id="likely-game-container">
+                <p class="game-prompt" id="likely-text">...become a famous star?</p>
+                <div class="game-controls">
+                    <button class="btn btn-secondary" onclick="likelyVote('Tanya')">Tanya</button>
+                    <button class="btn btn-secondary" onclick="likelyVote('Yasith')">Yasith</button>
+                </div>
+                <div id="likely-feedback" class="feedback-text"></div>
+            </div>
+            <button class="btn-text" onclick="nextLikely()">Next One →</button>
+        </section>
+
+        <!-- Decision Maker -->
+        <section class="glass-card fade-in" style="animation-delay: 0.8s;">
+            <h3>Help Me Choose!</h3>
+            <p>Don't know what to do? Let this help you.</p>
+            <div class="decision-box" id="decision-result">
+                ???
+            </div>
+            <div class="decision-controls">
+                <button class="btn" onclick="decide('food')">What to Eat?</button>
+                <button class="btn" onclick="decide('activity')">What to Do?</button>
+            </div>
+        </section>
+
+        <!-- Fun Quiz -->
+        <section class="glass-card fade-in" style="animation-delay: 0.9s;" id="quiz-section">
+            <div class="badge">Leveled Up</div>
+            <h3>Fun Quiz about Us</h3>
+            <div id="quiz-container">
+                <p class="quiz-question" id="question-text">Loading the game...</p>
+                <div class="quiz-options">
+                    <!-- Options dynamicly injected -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Love Coupons -->
+        <section class="glass-card fade-in" style="animation-delay: 1.1s;">
+            <h3>Love Gift Cards</h3>
+            <p>Only for Tanya to use.</p>
+            <div class="coupon-container" id="coupon-display">
+                <div class="coupon">
+                    <div class="coupon-content">
+                        <span class="coupon-id">#ILY-3000</span>
+                        <h4 id="coupon-title">Yasith Does the Dishes</h4>
+                        <p id="coupon-desc">Yasith will wash them all. No complaining!</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" onclick="generateCoupon()">Generate Random Coupon</button>
+        </section>
+
+        <!-- Final Message -->
+        <section class="glass-card fade-in" style="animation-delay: 1.3s;">
+            <div class="heart-pulse">❤️</div>
+            <h2 style="font-family: var(--font-accent);">To My Forever & Always</h2>
+            <p>I love you very much. Thank you for being the best partner, my best friend,
+                and the love of my life.
+            </p>
+            <p style="margin-top: 1rem; color: var(--accent); font-weight: 600;">Here's to us, Tanya. Forever to go. ❤️
+            </p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
