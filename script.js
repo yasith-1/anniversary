@@ -80,19 +80,26 @@ let currentQuestion = 0;
 let currentLikely = 0;
 
 // Initialize Background Hearts
-function createHearts() {
+function createSingleHeart() {
     const container = document.getElementById('hearts-container');
-    const heartSymbols = ['❤️', '💖', '💕', '💗', '🍕', '✨', '🌹'];
+    if (!container) return;
+    const heartSymbols = ['❤️', '💖', '💕', '💗', '✨', '🌹'];
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+    heart.style.animationDuration = (Math.random() * 5 + 10) + 's';
+    heart.style.animationDelay = '0s';
+    container.appendChild(heart);
 
+    // Remove heart after animation to keep DOM clean
+    setTimeout(() => heart.remove(), 15000);
+}
+
+function createHearts() {
     for (let i = 0; i < 30; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
-        heart.style.animationDuration = (Math.random() * 10 + 15) + 's';
-        heart.style.animationDelay = (Math.random() * 10) + 's';
-        container.appendChild(heart);
+        setTimeout(createSingleHeart, Math.random() * 5000);
     }
 }
 
@@ -247,6 +254,52 @@ function calculateMatch() {
         }
     }, 80);
 }
+
+// Lock Logic
+function checkLock() {
+    const d1 = document.getElementById('date1').value.trim();
+    const d2 = document.getElementById('date2').value.trim();
+    const error = document.getElementById('lock-error');
+    const lockScreen = document.getElementById('lock-screen');
+    const mainContent = document.getElementById('main-content');
+
+    // Expected birthdays: 2002.09.13 and 2002.07.14
+    const valid1 = "2002.09.13";
+    const valid2 = "2002.07.14";
+
+    if ((d1 === valid1 && d2 === valid2) || (d1 === valid2 && d2 === valid1)) {
+        lockScreen.classList.add('unlocked');
+        mainContent.classList.remove('hidden');
+
+        // Burst of hearts for celebration
+        for (let i = 0; i < 50; i++) {
+            setTimeout(createSingleHeart, i * 20);
+        }
+
+        setTimeout(() => {
+            lockScreen.style.display = 'none';
+        }, 800);
+    } else {
+        error.innerText = "Incorrect dates, please try again ❤️";
+        // Shake animation could be added here
+        const card = document.querySelector('.lock-card');
+        card.style.animation = 'none';
+        setTimeout(() => {
+            card.style.animation = 'shake 0.5s ease';
+        }, 10);
+    }
+}
+
+// Add shake animation to CSS via JS or just add to CSS
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+`;
+document.head.appendChild(style);
 
 // Initialize everything
 window.onload = () => {

@@ -11,12 +11,47 @@
 <body>
     <div class="bg-hearts" id="hearts-container"></div>
 
-    <main class="container">
+    <!-- Lock Screen -->
+    <div id="lock-screen" class="lock-overlay">
+        <div class="glass-card lock-card">
+            <div class="lock-icon">🔒</div>
+            <h3>Unlock Our Memories</h3>
+            <p>Our special days are the keys.</p>
+            <div class="lock-inputs">
+                <div class="input-group">
+                    <label>Her Birthday</label>
+                    <input type="text" id="date1" placeholder="YYYY.MM.DD">
+                </div>
+                <div class="input-group">
+                    <label>His Birthday</label>
+                    <input type="text" id="date2" placeholder="YYYY.MM.DD">
+                </div>
+            </div>
+            <button class="btn" onclick="checkLock()">Unlock Now</button>
+            <p id="lock-error" class="error-text"></p>
+        </div>
+    </div>
+
+    <main class="container main-content hidden" id="main-content">
         <!-- Hero Section -->
         <section class="glass-card fade-in" style="animation-delay: 0.2s;">
             <h1>Happy Anniversary!</h1>
             <h2>Mine ❤️ Suduu Manikaaaaaa (Tanya)</h2>
             <p>From March 13, 2019, to forever.</p>
+        </section>
+
+        <!-- Memories Section (Initially Hidden/Revealed on Unlock) -->
+        <section class="glass-card fade-in" style="animation-delay: 0.3s;" id="memories-section">
+            <div class="badge">Special</div>
+            <h3>Our Special Moments</h3>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="couple1.png" alt="Our Memory 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="couple2.png" alt="Our Memory 2">
+                </div>
+            </div>
         </section>
 
         <!-- Time Together Section -->
@@ -45,7 +80,6 @@
 
         <!-- Match Game -->
         <section class="glass-card fade-in" style="animation-delay: 0.5s;">
-            <div class="badge">Funny</div>
             <h3>Are We a Match?</h3>
             <div class="match-container">
                 <div class="match-names">
